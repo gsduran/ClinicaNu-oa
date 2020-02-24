@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Centro Médico Ñuñoa</title>
+</head>
+<script>
+
+    //DATOS
+    var radiologia = [
+        { hora: "11:00", especialista: "IGNACIO SCHULZ", paciente: "FRANCISCA ROJAS", RUT: "9878782-1", prevision: "FONASA" },
+        { hora: "11:30", especialista: "FEDERICO SUBERCASEAUX", paciente: "PAMELA ESTRADA", RUT: "15345241-3", prevision: "ISAPRE" },
+        { hora: "15:00", especialista: "FERNANDO WURTHZ", paciente: "ARMANDO LUNA", RUT: "16445345-9", prevision: "ISAPRE" },
+        { hora: "15:30", especialista: "ANA MARIA GODOY", paciente: "MANUEL GODOY", RUT: "17666419-0", prevision: "FONASA" },
+        { hora: "16:00", especialista: "PATRICIA SUAZO", paciente: "RAMON ULLOA", RUT: "14989389-K", prevision: "FONASA" },
+    ]
+
+    var traumatologia = [
+        { hora: "8:00", especialista: "MARIA PAZ ALTUZARRA", paciente: "PAULA SANCHEZ", RUT: "15554774-5", prevision: "FONASA" },
+        { hora: "10:00", especialista: "RAUL ARAYA", paciente: "ANGÉLICA NAVAS", RUT: "15444147-9", prevision: "ISAPRE" },
+        { hora: "10:30", especialista: "MARIA ARRIAGADA", paciente: "ANA KLAPP", RUT: "17879423-9", prevision: "ISAPRE" },
+        { hora: "11:00", especialista: "ALEJANDRO BADILLA", paciente: "FELIPE MARDONES", RUT: "1547423-6", prevision: "ISAPRE" },
+        { hora: "11:30", especialista: "CECILIA BUDNIK", paciente: "DIEGO MARRE", RUT: "16554741-K", prevision: "FONASA" },
+        { hora: "12:00", especialista: "ARTURO CAVAGNARO", paciente: "CECILIA MENDEZ", RUT: "9747535-8", prevision: "ISAPRE" },
+        { hora: "12:30", especialista: "ANDRES KANACRI", paciente: "MARCIAL SUAZO", RUT: "11254785-5", prevision: "ISAPRE" },
+    ]
+
+    var dental = [
+        { hora: "8:00", especialista: "IGNACIO SCHULZ", paciente: "MARCELA RETAMAL", RUT: "11123425-6", prevision: "ISAPRE" },
+        { hora: "10:00", especialista: "FEDERICO SUBERCASEAUX", paciente: "ANGEL MUÑOZ", RUT: "9878789-2", prevision: "ISAPRE" },
+        { hora: "10:30", especialista: "FERNANDO WURTHZ", paciente: "MARIO KAST", RUT: "7998789-5", prevision: "FONASA" },
+        { hora: "11:00", especialista: "ANA MARIA GODOY", paciente: "KARIN FERNANDEZ", RUT: "18887662-K", prevision: "FONASA" },
+        { hora: "11:30", especialista: "PATRICIA SUAZO", paciente: "HUGO SANCHEZ", RUT: "17665461-4", prevision: "FONASA" },
+        { hora: "12:00", especialista: "PATRICIA SUAZO", paciente: "ANA SEPULVEDA", RUT: "14441281-0", prevision: "ISAPRE" },
+    ]
+    //FIN DATOS
+
+    //Traumatologia
+    //Antes
+    document.write('<h3>Traumatologia antes del push</h3>');
+    document.write('<p>Cantidad de Pacientes: ' + traumatologia.length + "</p>");
+    lista(traumatologia);
+    primero(traumatologia);
+    ultimo(traumatologia);
+    //Ingreso de nuevos datos
+    traumatologia.push(
+        { hora: "09:00", especialista: "RENÉ POBLETE", paciente: "ANA GELLONA", RUT: "13123329-7", prevision: "ISAPRE" },
+        { hora: "09:30", especialista: "MARIA SOLAR", paciente: "RAMIRO ANDRADE", RUT: "12221451-K", prevision: "FONASA" },
+        { hora: "10:00", especialista: "RAUL LOYOLA", paciente: "CARMEN ISLA", RUT: "10112348-3", prevision: "ISAPRE" },
+        { hora: "10:30", especialista: "ANTONIO LARENAS", paciente: "PABLO LOAYZA", RUT: "13453234-1", prevision: "ISAPRE" },
+        { hora: "12:00", especialista: "MATIAS ARAVENA", paciente: "SUSANA POBLETE", RUT: "14345656-6", prevision: "FONASA" }
+    );
+    //Despues del push
+    document.write('<h3>Traumatologia despues del push</h3>');
+    document.write('<p>Cantidad de Pacientes: ' + traumatologia.length + "</p>");
+    lista(traumatologia);
+    primero(traumatologia);
+    ultimo(traumatologia);
+    //Radiologia
+    document.write('<h3>Radiologia</h3>');
+    document.write('<p>Cantidad de Pacientes: ' + radiologia.length + "</p>");
+    lista(radiologia);
+    primero(radiologia);
+    ultimo(radiologia);
+    radiologia.shift();
+    radiologia.pop();
+    //Radiologia despues de borrar el primero y el ultimo
+    document.write('<h3>Radiologia Actualizada</h3>');
+    document.write('<p>Cantidad de Pacientes: ' + radiologia.length + "</p>");
+    lista(radiologia);
+    primero(radiologia);
+    ultimo(radiologia);
+    //Lista detallada de dental 
+    document.write('<h3>Dental</h3>');
+    document.write('<p>Cantidad de Pacientes: ' + dental.length + "</p>");
+    listaDetalle(dental);
+    //Lista completa
+    document.write('<h3>lista completa</h3>');
+
+    lista(traumatologia);
+    lista(radiologia);
+    lista(dental);
+    //Cambio de prevision
+    document.write('<h3>Cambio prevision Dental</h3>');
+    cambiarPrevisiones(dental)
+    listaDetalle(dental)
+
+    //FUNCIONES
+    //Lista
+    function lista(especialidad) {
+        for (let i = 0; i < especialidad.length; i++) {
+            document.write('Paciente : ' + especialidad[i].paciente + "<br>");
+        }
+    }
+    //Lista Detallada
+    function listaDetalle(especialidad) {
+        for (let i = 0; i < especialidad.length; i++) {
+            document.write(especialidad[i].hora + " - " + especialidad[i].especialista + " - " + especialidad[i].paciente + " - " + especialidad[i].RUT + " - " + especialidad[i].prevision + "<br>");
+        }
+    }
+    function ultimo(especialidad) {
+        for (let i = 0; i < radiologia.length; i++) {
+            if (i = especialidad.length - 1) {
+                document.write('| Ultimo paciente : ' + especialidad[i].paciente + "-" + especialidad[i].RUT + "-" + especialidad[i].prevision);
+            }
+        }
+    }
+    function primero(especialidad) {
+        document.write('Primer paciente : ' + especialidad[0].paciente + "-" + especialidad[0].RUT + "-" + especialidad[0].prevision);
+
+    }
+
+    function cambiarPrevisiones(especialidad) {
+        for (let i = 0; i < especialidad.length; i++) {
+            if (especialidad[i].prevision == "ISAPRE") {
+                especialidad[i].prevision = "FONASA";
+            } else {
+                especialidad[i].prevision = "ISAPRE";
+            }
+        }
+    }
+
+    //FIN FUNCIONES
+</script>
+
+<body>
+
+</body>
+
+</html>
